@@ -1,0 +1,18 @@
+#ファイル設定docker-compose.yaml
+version: '3'
+services:
+  web:
+    build:
+        context: .
+        dockerfile:
+          Dockerfile
+    ports:
+      - "30000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    tty:
+      true
+    #development環境でのみ実行
+    environment:
+      - NODE_ENV=development
